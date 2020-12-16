@@ -1,33 +1,19 @@
-const ingredients = [
-  'Картошка',
-  'Грибы',
-  'Чеснок',
-  'Помидоры',
-  'Зелень',
-  'Приправы',
-];
-console.table(ingredients);
+import ingredients from './ingredients.js';
+
+// console.table(ingredients);
 
 const createIngredientCard = ingredient => {
   const liRef = document.createElement('li');
-  liRef.textContent = ingredient.name;
-  console.log(liRef);
-  return createIngredientCard;
+  liRef.textContent = ingredient;
+
+  return liRef;
 };
 
-createIngredientCard(ingredients);
+const ingredientCard = ingredients.map(ingredient =>
+  createIngredientCard(ingredient),
+);
 
-// const ulRef = document.createElement('ul');
-// console.log(ulRef);
-// // ulRef.id = 'ingredients';
+const ulRef = document.querySelector('#ingredients');
+console.log(ulRef);
 
-// const liRef = document.createElement('li');
-// liRef.textContent = ingredients[name];
-// console.log(liRef);
-
-// ulRef.appendChild(liRef);
-// console.log(ulRef);
-
-// const ingredientsCard = document.querySelector('#ingredients');
-
-// ingredientsCard.appendChild(ulRef);
+ulRef.append(...ingredientCard);
